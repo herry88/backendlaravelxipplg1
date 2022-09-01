@@ -25,6 +25,11 @@ Route::get(
     [CategoryController::class, 'index']
 )->name('category.index');
 
+Route::post(
+    'store-data',
+    [CategoryController::class, 'store']
+)->name('category.store');
+
 
 //json sederhana
 //route = rute = jalan jalur

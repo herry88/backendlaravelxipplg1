@@ -36,7 +36,31 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+        $this->validate($request, [
+            'namacategory' => 'required',
+            'keterangan' => 'required'
+        ]);
+        //request
+        $input = $request->all();
+        //save data
+        $category = Category::create($input);
+        //logika redirect
+        if ($category) {
+            return response()->json(
+                [
+                    'msg' => true,
+                    $category
+                ]
+            );
+        } else {
+            return response()->json(
+                [
+                    'msg' => false,
+                    'Failed Save Data'
+                ]
+            );
+        }
     }
 
     /**
